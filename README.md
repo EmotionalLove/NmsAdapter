@@ -30,7 +30,7 @@ dependencies {
   <dependency>
     <groupId>com.github.EmotionalLove</groupId>
     <artifactId>NmsAdapter</artifactId>
-    <version>Tag</version>
+    <version>2cc65a8f83</version>
   </dependency>
 </dependencies>
 ```
