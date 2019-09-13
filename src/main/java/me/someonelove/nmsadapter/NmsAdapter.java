@@ -2,6 +2,8 @@ package me.someonelove.nmsadapter;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.logging.Level;
+
 public class NmsAdapter {
 
     private String nmsVersion;
@@ -10,7 +12,9 @@ public class NmsAdapter {
         // the package for nms classes has the version in it!
         String[] pkgSplit = plugin.getServer().getClass().getPackage().getName().split("\\.");
         nmsVersion = pkgSplit[pkgSplit.length - 1];
-
+        plugin.getLogger().log(Level.INFO, "NmsAdapter detected Nms version " + nmsVersion);
+        plugin.getLogger().log(Level.INFO, "Additionally, the version of Minecraft running is 1." + getMajorVersion() + ".x");
+        plugin.getLogger().log(Level.INFO, "Successfully set up NmsAdapter.");
     }
 
     /**

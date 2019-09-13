@@ -5,16 +5,15 @@ A library for making NMS calls cross-compatible, the easy way.
 Use maven or gradle
 
 ## Gradle
-```
+```groovy
 allprojects {
   repositories {
-    ...
       maven { url 'https://jitpack.io' }
   }
 }
   
 dependencies {
-  implementation 'com.github.EmotionalLove:NmsAdapter:2cc65a8f83'
+  implementation 'com.github.EmotionalLove:NmsAdapter:-SNAPSHOT'
 }
 
 ```
@@ -30,7 +29,7 @@ dependencies {
   <dependency>
     <groupId>com.github.EmotionalLove</groupId>
     <artifactId>NmsAdapter</artifactId>
-    <version>2cc65a8f83</version>
+    <version>-SNAPSHOT</version>
   </dependency>
 </dependencies>
 ```
