@@ -6,32 +6,32 @@ Use maven or gradle
 
 ## Gradle
 ```
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+allprojects {
+  repositories {
+    ...
+      maven { url 'https://jitpack.io' }
+  }
+}
   
-  dependencies {
-	  implementation 'com.github.EmotionalLove:NmsAdapter:Tag'
-	}
+dependencies {
+  implementation 'com.github.EmotionalLove:NmsAdapter:2cc65a8f83'
+}
 
 ```
 ## Maven
 ```xml
 <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+  <repository>
+    <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+</repositories>
 <dependencies>
   <dependency>
-	    <groupId>com.github.EmotionalLove</groupId>
-	    <artifactId>NmsAdapter</artifactId>
-	    <version>Tag</version>
-	</dependency>
+    <groupId>com.github.EmotionalLove</groupId>
+    <artifactId>NmsAdapter</artifactId>
+    <version>Tag</version>
+  </dependency>
 </dependencies>
 ```
 
