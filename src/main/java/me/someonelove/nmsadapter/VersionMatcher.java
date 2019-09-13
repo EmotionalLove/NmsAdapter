@@ -3,24 +3,24 @@ package me.someonelove.nmsadapter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+* Kinda inspired from Rust's `match` expression.
+* Rule - The rule required to pass for the corresponding String to be used.
+* <p>
+* Entries closest to the head have priority.
+* e.g.
+* Version of bukkit running is 1.12
+* A field in SomeClass is 'a' in every version, but 'c' in 1.14
+* rules.put(new Rule(Comparative.EQUALS, 14), "c");
+* defaultRule = "a";
+* <p>
+* or
+* <p>
+* rules.put(new Rule(Comparative.LESS_THAN, 14), "a");
+* defaultRule = "c";
+*/
 public class VersionMatcher {
-
-    /**
-     * Kinda inspired from Rust's `match` expression.
-     * Rule - The rule required to pass for the corresponding String to be used.
-     * <p>
-     * Entries closest to the head have priority.
-     * e.g.
-     * Version of bukkit running is 1.12
-     * A field in SomeClass is 'a' in every version, but 'c' in 1.14
-     * rules.put(new Rule(Comparative.EQUALS, 14), "c");
-     * defaultRule = "a";
-     * <p>
-     * or
-     * <p>
-     * rules.put(new Rule(Comparative.LESS_THAN, 14), "a");
-     * defaultRule = "c";
-     */
+    
     public final LinkedHashMap<Rule, String> rules = new LinkedHashMap<>();
     public final String defaultRule;
 
