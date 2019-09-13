@@ -14,8 +14,10 @@ public class TypedFieldGetter<T> {
         this.field = field;
         this.instance = instance;
     }
+
     /**
      * Set the field
+     *
      * @return Whether the operation was successful.
      */
     public T execute() {

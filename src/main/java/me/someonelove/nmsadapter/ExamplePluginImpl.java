@@ -17,8 +17,8 @@ public class ExamplePluginImpl /* extends JavaPlugin */ {
         // example - this won't actually run on anything above 1.11 because I can't be bothered to look up the actual function names.
         VersionMatcher matcher = // ItemStack.getName()
                 new VersionMatcher("a")
-                .then(new VersionMatcher.Rule(VersionMatcher.Comparative.EQUAL, 14), "c") // == 1.14.x
-                .then(new VersionMatcher.Rule(VersionMatcher.Comparative.GREATER_THAN, 11), "b"); // > 1.11.x
+                        .then(new VersionMatcher.Rule(VersionMatcher.Comparative.EQUAL, 14), "c") // == 1.14.x
+                        .then(new VersionMatcher.Rule(VersionMatcher.Comparative.GREATER_THAN, 11), "b"); // > 1.11.x
         nmsItemStackClass.invokeFunction(matcher, adapter);
     }
 }

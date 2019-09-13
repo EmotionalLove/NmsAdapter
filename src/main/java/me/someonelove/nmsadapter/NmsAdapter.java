@@ -19,15 +19,15 @@ public class NmsAdapter {
 
     /**
      * Create a MinecraftClass for accessing static and instance fields and functions
-     * @param where The package name + the class name.
+     *
+     * @param where    The package name + the class name.
      * @param instance An instance of the Class you're trying to find.
-     * When accessing NMS and CraftBukkit classes, use these replace keys:
-     * {nms} For classes in `net.minecraft.server.[version]`
-     * {cb} For classes in `org.bukkit.craftbukkit.[version]`
-     *
-     * So if you wanted to access the NMS ItemStack class, you'd pass "{nms}.ItemStack"
-     * If you wanted to access `CraftItemStack`, you'd pass "{cb}.inventory.CraftItemStack"
-     *
+     *                 When accessing NMS and CraftBukkit classes, use these replace keys:
+     *                 {nms} For classes in `net.minecraft.server.[version]`
+     *                 {cb} For classes in `org.bukkit.craftbukkit.[version]`
+     *                 <p>
+     *                 So if you wanted to access the NMS ItemStack class, you'd pass "{nms}.ItemStack"
+     *                 If you wanted to access `CraftItemStack`, you'd pass "{cb}.inventory.CraftItemStack"
      * @return The coressponding MinecraftClass for the given path
      * or null if it was invalid >.>
      */
@@ -42,14 +42,14 @@ public class NmsAdapter {
 
     /**
      * Create a MinecraftClass for accessing static fields and functions
+     *
      * @param where The package name + the class name
-     * When accessing NMS and CraftBukkit classes, use these replace keys:
-     * {nms} For classes in `net.minecraft.server.[version]`
-     * {cb} For classes in `org.bukkit.craftbukkit.[version]`
-     *
-     * So if you wanted to access the NMS ItemStack class, you'd pass "{nms}.ItemStack"
-     * If you wanted to access `CraftItemStack`, you'd pass "{cb}.inventory.CraftItemStack"
-     *
+     *              When accessing NMS and CraftBukkit classes, use these replace keys:
+     *              {nms} For classes in `net.minecraft.server.[version]`
+     *              {cb} For classes in `org.bukkit.craftbukkit.[version]`
+     *              <p>
+     *              So if you wanted to access the NMS ItemStack class, you'd pass "{nms}.ItemStack"
+     *              If you wanted to access `CraftItemStack`, you'd pass "{cb}.inventory.CraftItemStack"
      * @return The coressponding MinecraftClass for the given path
      * or null if it was invalid >.>
      */
@@ -64,6 +64,7 @@ public class NmsAdapter {
 
     /**
      * Get the NMS version
+     *
      * @return something like v1_14_1_R1
      */
     public final String getNmsVersion() {
@@ -72,6 +73,7 @@ public class NmsAdapter {
 
     /**
      * Get the major version of Minecraft
+     *
      * @return The number in the middle
      * So like
      * if you're running 1.14.4 this would return 14

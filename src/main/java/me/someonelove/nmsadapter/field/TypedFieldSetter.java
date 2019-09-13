@@ -24,8 +24,9 @@ public class TypedFieldSetter<T> {
 
     /**
      * Returns whether the two types are equal and compatible.
-     * @return Whether they're compatible
      *
+     * @return Whether they're compatible
+     * <p>
      * this will not account for super-types and interfaces. This should only be used if you know that
      * what you're planning on putting in is the same exact type as what the field expects.
      */
@@ -35,6 +36,7 @@ public class TypedFieldSetter<T> {
 
     /**
      * Set the field
+     *
      * @return Whether the operation was successful.
      */
     public boolean execute() {
