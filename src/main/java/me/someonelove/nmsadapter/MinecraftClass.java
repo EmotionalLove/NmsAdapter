@@ -29,9 +29,12 @@ public class MinecraftClass {
             types[i] = parameters[i].getClass();
         }
         try {
-            Constructor func = minecraftClass.getConstructor(types);
-            func.setAccessible(true);
-            ConstructorInvoker invoker = new ConstructorInvoker(func, parameters);
+            Constructor constructor = minecraftClass.getConstructor(types);
+            if (!constructor.isAccessible()) {
+                System.out.println("NmsAdapter warning - Accessing inaccessible constructor in " + minecraftClass.getSimpleName() + ". It was probably inaccessible for a reason. Bad evil may happen.");
+            }
+            constructor.setAccessible(true);
+            ConstructorInvoker invoker = new ConstructorInvoker(constructor, parameters);
             return invoker.construct();
         } catch (NoSuchMethodException x) {
             x.printStackTrace();
