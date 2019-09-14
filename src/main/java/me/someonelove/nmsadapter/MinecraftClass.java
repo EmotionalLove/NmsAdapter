@@ -53,8 +53,27 @@ public class MinecraftClass {
         Class<?>[] types = new Class<?>[parameters.length];
         for (int i = 0; i < parameters.length; i++) {
             types[i] = parameters[i].getClass();
-            System.out.println(parameters[i].getClass().getSimpleName());
         }
+        try {
+            Method func = minecraftClass.getMethod(functionName, types);
+            func.setAccessible(true);
+            FunctionInvoker invoker = new FunctionInvoker(func, instance, parameters);
+            return invoker.invoke();
+        } catch (NoSuchMethodException x) {
+            x.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Invoke the given function
+     *
+     * @param functionName The name of the function
+     * @param types        The explicit types of the params
+     * @param parameters   The parameters to pass to the function
+     * @return null if the function is void, or if an exception occurred, or an object if the function returned something.
+     */
+    public Object invokeFunctionExplicit(String functionName, Class<?>[] types, Object... parameters) {
         try {
             Method func = minecraftClass.getMethod(functionName, types);
             func.setAccessible(true);
