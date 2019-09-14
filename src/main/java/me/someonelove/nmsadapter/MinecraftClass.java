@@ -2,8 +2,10 @@ package me.someonelove.nmsadapter;
 
 import me.someonelove.nmsadapter.field.FieldGetter;
 import me.someonelove.nmsadapter.field.FieldSetter;
+import me.someonelove.nmsadapter.function.ConstructorInvoker;
 import me.someonelove.nmsadapter.function.FunctionInvoker;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -19,6 +21,22 @@ public class MinecraftClass {
 
     protected MinecraftClass(Class<?> minecraftClass) {
         this.minecraftClass = minecraftClass;
+    }
+
+    public Object newInstance(Object... parameters) {
+        Class<?>[] types = new Class<?>[parameters.length];
+        for (int i = 0; i < parameters.length; i++) {
+            types[i] = parameters[i].getClass();
+        }
+        try {
+            Constructor func = minecraftClass.getConstructor(types);
+            func.setAccessible(true);
+            ConstructorInvoker invoker = new ConstructorInvoker(func, parameters);
+            return invoker.construct();
+        } catch (NoSuchMethodException x) {
+            x.printStackTrace();
+            return null;
+        }
     }
 
     /**
