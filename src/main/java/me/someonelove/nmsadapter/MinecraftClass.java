@@ -27,6 +27,7 @@ public class MinecraftClass {
         Class<?>[] types = new Class<?>[parameters.length];
         for (int i = 0; i < parameters.length; i++) {
             types[i] = parameters[i].getClass();
+            System.out.println(parameters[i].getClass().getSimpleName());
         }
         try {
             Constructor constructor = minecraftClass.getConstructor(types);
