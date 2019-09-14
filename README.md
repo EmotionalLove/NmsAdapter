@@ -1,6 +1,9 @@
 # NmsAdapter
 A library for making NMS calls cross-compatible, the easy way.
 
+## Background
+Minecraft's native code is tucked behind the bukkit API inside of the `net.minecraft.server` package. Although the Bukkit API allows for reliable manipulation of these classes, sometimes a developer needs to go beyond what the Bukkit API allows for. Unfortunately using NMS code tends to only work on the Minecraft version you compile it against, due to the ever-changing unobfuscated names and the package name that changes on every major release of Minecraft. This library aims to solve all of that, using the magic of Reflection and the `VersionMatcher` class contained in this library.
+
 # Adding to your project
 Use maven or gradle
 
