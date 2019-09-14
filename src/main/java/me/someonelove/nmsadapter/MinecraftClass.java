@@ -66,7 +66,7 @@ public class MinecraftClass {
     }
 
     /**
-     * Invoke the given function
+     * Invoke the given function with explicitly stated types because Java just sucks sometimes. Use this if you get wonky errors.
      *
      * @param functionName The name of the function
      * @param types        The explicit types of the params
