@@ -174,4 +174,13 @@ public class MinecraftClass {
     public Object getField(VersionMatcher matcher, NmsAdapter adapter) {
         return this.getField(matcher, adapter.getMajorVersion());
     }
+
+    /**
+     * Set the instance of the class to make calls to
+     *
+     * @param object The instance :3
+     */
+    public void setInstance(/* @Nullable */ Object object) {
+        this.instance = object;
+    }
 }
