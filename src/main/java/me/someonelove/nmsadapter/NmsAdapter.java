@@ -41,6 +41,29 @@ public class NmsAdapter {
     }
 
     /**
+     * Create a MinecraftClass for accessing static and instance fields and functions
+     *
+     * @param where    A VersionMatcher that matches the package name + the class name.
+     * @param instance An instance of the Class you're trying to find.
+     *                 When accessing NMS and CraftBukkit classes, use these replace keys:
+     *                 {nms} For classes in `net.minecraft.server.[version]`
+     *                 {cb} For classes in `org.bukkit.craftbukkit.[version]`
+     *                 <p>
+     *                 So if you wanted to access the NMS ItemStack class, you'd pass "{nms}.ItemStack"
+     *                 If you wanted to access `CraftItemStack`, you'd pass "{cb}.inventory.CraftItemStack"
+     * @return The coressponding MinecraftClass for the given path
+     * or null if it was invalid >.>
+     */
+    public MinecraftClass getMinecraftClass(VersionMatcher where, Object instance) {
+        try {
+            return new MinecraftClass(Class.forName(where.match(getMajorVersion()).replace("{nms}", "net.minecraft.server." + nmsVersion).replace("{cb}", "org.bukkit.craftbukkit." + nmsVersion)), instance);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
      * Create a MinecraftClass for accessing static fields and functions
      *
      * @param where The package name + the class name
