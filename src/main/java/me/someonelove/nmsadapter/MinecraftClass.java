@@ -8,11 +8,17 @@ import me.someonelove.nmsadapter.function.FunctionInvoker;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MinecraftClass {
 
     public Class<?> minecraftClass;
     private Object instance = null;
+
+    //                         types, method
+    private Map<String, Pair<Class<?>[], Method>> functionCache = new HashMap<>();
+    private Map<String, Field> fieldCache = new HashMap<>();
 
     protected MinecraftClass(Class<?> minecraftClass, Object instance) {
         this.minecraftClass = minecraftClass;
@@ -54,8 +60,20 @@ public class MinecraftClass {
         for (int i = 0; i < parameters.length; i++) {
             types[i] = parameters[i].getClass();
         }
+
         try {
-            Method func = minecraftClass.getMethod(functionName, types);
+            Method func;
+            if (functionCache.containsKey(functionName)) {
+                if (functionCache.get(functionName).a == types) {
+                    func = functionCache.get(functionName).b;
+                } else {
+                    func = minecraftClass.getMethod(functionName, types);
+                    functionCache.put(functionName, new Pair<>(types, func));
+                }
+            } else {
+                func = minecraftClass.getMethod(functionName, types);
+                functionCache.put(functionName, new Pair<>(types, func));
+            }
             func.setAccessible(true);
             FunctionInvoker invoker = new FunctionInvoker(func, instance, parameters);
             return invoker.invoke();
@@ -117,8 +135,14 @@ public class MinecraftClass {
      * @return true if the operation was completed successfully.
      */
     public boolean setField(String fieldName, Object newValue) {
+        Field field;
         try {
-            Field field = minecraftClass.getField(fieldName);
+            if (fieldCache.containsKey(fieldName)) {
+                field = fieldCache.get(fieldName);
+            } else {
+                field = minecraftClass.getField(fieldName);
+                fieldCache.put(fieldName, field);
+            }
             field.setAccessible(true);
             FieldSetter setter = new FieldSetter(field, instance, newValue);
             return setter.execute();
